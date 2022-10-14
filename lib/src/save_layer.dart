@@ -129,18 +129,19 @@ class RenderSaveLayer extends RenderProxyBox {
     }
 
     if (child.needsCompositing) {
-      throw FlutterError.fromParts([
-        ErrorSummary('`SaveLayer.child` cannot contain compositing layers.'),
-        ErrorDescription(
-          'The save layer, into which SaveLayer.child is painted, cannot '
-          'encompass compositing layers.',
-        ),
-        ErrorHint(
-          'Ensure `SaveLayer.child` contains no widgets which need '
-          'compositing, such as `RepaintBoundary`.',
-        ),
-        _leafCompositingRenderObjects(child).first.describeForError('')
-      ]);
+      return;
+      // throw FlutterError.fromParts([
+      //   ErrorSummary('`SaveLayer.child` cannot contain compositing layers.'),
+      //   ErrorDescription(
+      //     'The save layer, into which SaveLayer.child is painted, cannot '
+      //     'encompass compositing layers.',
+      //   ),
+      //   ErrorHint(
+      //     'Ensure `SaveLayer.child` contains no widgets which need '
+      //     'compositing, such as `RepaintBoundary`.',
+      //   ),
+      //   _leafCompositingRenderObjects(child).first.describeForError('')
+      // ]);
     }
   }
 
